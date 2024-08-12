@@ -1,20 +1,9 @@
-#!/bin/bash
-
-PARENT_DIR=$(dirname "${PWD}")
-
-source config_env.sh
-source common.sh
-
-set_gcp_project "${UWEAR_PROJECT_ID}"
-
-cat << 'EOF' > "${PARENT_DIR}"/src/uwear/workload.go
-// Simple workload that connects to a TLS session. 
+// Package main is a simple workload that connects to a TLS session.
 // Receives a token via the session
 // Validates the PKI token is signed by Google.
 // Verifies the claims returned (image digest, hardware, software, aud etc.)
 // Verifies the nonce equals the TLS Exported Keying Material hash.
 // If the token is valid, it sends back the sensitive data via the TLS session.
-
 
 package main
 
@@ -447,5 +436,3 @@ func main() {
 	fmt.Println("Sent payload. Closing the connection")
 	conn.Close()
 }
-
-EOF

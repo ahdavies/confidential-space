@@ -20,7 +20,6 @@ gcloud auth configure-docker "${UWEAR_PROJECT_REPOSITORY_REGION}"-docker.pkg.dev
 
 echo "Updating workload code with required resource names ..."
 cd "${PARENT_DIR}"/scripts
-./generate_uwear_workload_code.sh
 sed -i'' "s/UWEAR_PROJECT_ID/${UWEAR_PROJECT_ID}/" "${PARENT_DIR}"/src/uwear/workload.go
 sed -i'' "s/UWEAR_PROJECT_NUMBER/${UWEAR_PROJECT_NUMBER}/" "${PARENT_DIR}"/src/uwear/workload.go
 

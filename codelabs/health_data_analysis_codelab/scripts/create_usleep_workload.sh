@@ -20,7 +20,6 @@ gcloud auth configure-docker "${USLEEP_PROJECT_REPOSITORY_REGION}"-docker.pkg.de
 
 echo "Updating workload code with required resource names ..."
 
-./generate_usleep_workload_code.sh
 sed -i'' "s/USLEEP_PROJECT_ID/${USLEEP_PROJECT_ID}/" "${PARENT_DIR}"/src/usleep/workload.go
 sed -i'' "s/USLEEP_PROJECT_NUMBER/${USLEEP_PROJECT_NUMBER}/" "${PARENT_DIR}"/src/usleep/workload.go
 

@@ -1,19 +1,8 @@
-#!/bin/bash
-
-PARENT_DIR=$(dirname "${PWD}")
-
-source config_env.sh
-source common.sh
-
-set_gcp_project "${USLEEP_PROJECT_ID}"
-
-cat << 'EOF' > "${PARENT_DIR}"/src/usleep/workload.go
-// Simple workload to analyze health data securely.
+// Package main is a simple workload to analyze health data securely.
 // Sets up a websocket server to receive health data from UWEAR.
 // Requests a custom token from the Attestation service.
 // Uses the token retrieve the health data from UWEAR
 // Runs a sleep algorithm on the PHI.
-
 
 package main
 
@@ -221,5 +210,3 @@ func main() {
 	err = server.ListenAndServeTLS("./server.crt", "./server.key")
 	fmt.Printf("Unable to start Server %v", err)
 }
-
-EOF
